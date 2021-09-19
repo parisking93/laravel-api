@@ -2271,6 +2271,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Main",
   data: function data() {
@@ -2300,6 +2301,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.lastPage = rensponse.data.results.last_page;
         _this.posts = rensponse.data.results.data;
       });
+    },
+    formatData: function formatData(date) {
+      //formatto la data
+      var dataCreated = new Date(date);
+      return dataCreated.getDate() + '/' + (dataCreated.getMonth() + 1) + '/' + dataCreated.getFullYear();
     }
   }
 });
@@ -38121,6 +38127,10 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _c("h4", { staticClass: "card-title" }, [
                   _vm._v(_vm._s(post.title))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-muted" }, [
+                  _vm._v("Del " + _vm._s(_vm.formatData(post.created_at)))
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [

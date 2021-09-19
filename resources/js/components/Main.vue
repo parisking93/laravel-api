@@ -5,6 +5,7 @@
                 <div class="card w-100" style="width: 18rem;">
                     <div class="card-body">
                         <h4 class="card-title">{{post.title}}</h4>
+                        <span class="text-muted">Del {{ formatData(post.created_at) }}</span>
                         <p class="card-text">{{(post.content.length < 150) ? post.content : (post.content.slice(0,150) + '...')}}</p>
                         <a href="#" class="btn btn-primary">Show Details</a>
                     </div>
@@ -71,6 +72,11 @@ export default {
 
                         this.posts = rensponse.data.results.data;
                     })
+            },
+            formatData(date) {
+                //formatto la data
+                const dataCreated = new Date(date);
+                return dataCreated.getDate() + '/' + (dataCreated.getMonth() + 1) + '/' + dataCreated.getFullYear();
             }
         }
 
