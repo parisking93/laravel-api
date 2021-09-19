@@ -19,6 +19,6 @@
 
         </div>
         <!-- mi collego al file front.js  -->
-        <script src="{{ asset(js/front.js}}"></script>
+        <script src="{{ asset('js/front.js')}}"></script>
     </body>
 </html>
