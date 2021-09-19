@@ -2268,6 +2268,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Main",
   data: function data() {
@@ -38105,7 +38108,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container pt-5" }, [
+  return _c("div", { staticClass: "container pt-5 h-100" }, [
     _c(
       "div",
       { staticClass: "row mt-5" },
@@ -38121,7 +38124,13 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(post.content))
+                  _vm._v(
+                    _vm._s(
+                      post.content.length < 150
+                        ? post.content
+                        : post.content.slice(0, 150) + "..."
+                    )
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -38137,64 +38146,66 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-      _c(
-        "ul",
-        { staticClass: "pagination" },
-        [
-          _c(
-            "li",
-            {
-              staticClass: "page-item",
-              class: _vm.currentPage == 1 ? "disabled" : "",
-              on: {
-                click: function($event) {
-                  return _vm.getPost(_vm.currentPage - 1)
-                }
-              }
-            },
-            [_vm._m(0)]
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.lastPage, function(page) {
-            return _c(
+    _c("div", { staticClass: "d-flex justify-content-center mt-4" }, [
+      _c("nav", { attrs: { "aria-label": "Page navigation example m-auto" } }, [
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _c(
               "li",
               {
-                key: page,
                 staticClass: "page-item",
-                class: _vm.currentPage == page ? "active" : "",
+                class: _vm.currentPage == 1 ? "disabled" : "",
                 on: {
                   click: function($event) {
-                    return _vm.getPost(page)
+                    return _vm.getPost(_vm.currentPage - 1)
                   }
                 }
               },
-              [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-                  _vm._v(_vm._s(page))
-                ])
-              ]
-            )
-          }),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "page-item",
-              class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
-              on: {
-                click: function($event) {
-                  _vm.currentPage == _vm.lastPage
-                    ? ""
-                    : _vm.getPost(_vm.currentPage + 1)
+              [_vm._m(0)]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.lastPage, function(page) {
+              return _c(
+                "li",
+                {
+                  key: page,
+                  staticClass: "page-item",
+                  class: _vm.currentPage == page ? "active" : "",
+                  on: {
+                    click: function($event) {
+                      return _vm.getPost(page)
+                    }
+                  }
+                },
+                [
+                  _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                    _vm._v(_vm._s(page))
+                  ])
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
+                on: {
+                  click: function($event) {
+                    _vm.currentPage == _vm.lastPage
+                      ? ""
+                      : _vm.getPost(_vm.currentPage + 1)
+                  }
                 }
-              }
-            },
-            [_vm._m(1)]
-          )
-        ],
-        2
-      )
+              },
+              [_vm._m(1)]
+            )
+          ],
+          2
+        )
+      ])
     ])
   ])
 }

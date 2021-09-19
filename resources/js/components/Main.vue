@@ -1,35 +1,38 @@
 <template>
-    <div class="container pt-5">
+    <div class="container pt-5 h-100">
         <div class="row mt-5">
             <div class="col-6 py-2" v-for="post in posts" :key="post.id">
                 <div class="card w-100" style="width: 18rem;">
                     <div class="card-body">
                         <h4 class="card-title">{{post.title}}</h4>
-                        <p class="card-text">{{post.content}}</p>
+                        <p class="card-text">{{(post.content.length < 150) ? post.content : (post.content.slice(0,150) + '...')}}</p>
                         <a href="#" class="btn btn-primary">Show Details</a>
                     </div>
                 </div>
             </div>
-            
+        
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item" @click="getPost(currentPage - 1)" :class="(currentPage == 1) ? 'disabled':''">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li v-for="page in lastPage" :key="page" @click="getPost(page)" class="page-item" :class="(currentPage == page) ? 'active':''" >
-                    <a class="page-link" href="#">{{page}}</a>
-                </li>
+        <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation example m-auto">
+                <ul class="pagination">
+                    <li class="page-item" @click="getPost(currentPage - 1)" :class="(currentPage == 1) ? 'disabled':''">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li v-for="page in lastPage" :key="page" @click="getPost(page)" class="page-item" :class="(currentPage == page) ? 'active':''" >
+                        <a class="page-link" href="#">{{page}}</a>
+                    </li>
 
-                <li class="page-item" :class="(currentPage == lastPage) ? 'disabled':'' "  @click="(currentPage == lastPage) ? '': getPost(currentPage + 1)">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                    <li class="page-item" :class="(currentPage == lastPage) ? 'disabled':'' "  @click="(currentPage == lastPage) ? '': getPost(currentPage + 1)">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
         
     </div>
 </template>
