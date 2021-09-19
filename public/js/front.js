@@ -38146,6 +38146,7 @@ var render = function() {
             "li",
             {
               staticClass: "page-item",
+              class: _vm.currentPage == 1 ? "disabled" : "",
               on: {
                 click: function($event) {
                   return _vm.getPost(_vm.currentPage - 1)
@@ -38180,9 +38181,12 @@ var render = function() {
             "li",
             {
               staticClass: "page-item",
+              class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
               on: {
                 click: function($event) {
-                  return _vm.getPost(_vm.currentPage + 1)
+                  _vm.currentPage == _vm.lastPage
+                    ? ""
+                    : _vm.getPost(_vm.currentPage + 1)
                 }
               }
             },

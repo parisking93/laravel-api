@@ -14,7 +14,7 @@
         </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item" @click="getPost(currentPage - 1)">
+                <li class="page-item" @click="getPost(currentPage - 1)" :class="(currentPage == 1) ? 'disabled':''">
                     <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -23,7 +23,7 @@
                     <a class="page-link" href="#">{{page}}</a>
                 </li>
 
-                <li class="page-item" @click="getPost(currentPage + 1)">
+                <li class="page-item" :class="(currentPage == lastPage) ? 'disabled':'' "  @click="(currentPage == lastPage) ? '': getPost(currentPage + 1)">
                     <a class="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
